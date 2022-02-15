@@ -7,7 +7,7 @@ import csv
 from module import Fontlist, Text_list, Npc_pos, Enemy_pos, Text_list_en
 
 class App:
- def __init__(self):
+ def __init__(self):     
      #Language set
      self.lng = "none"
      
@@ -87,6 +87,10 @@ class App:
      self.Event_save = False
      self.End_event_x = []
      self.End_event_y = []
+     self.event_list = [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1010, 
+                        1011, 1012, 1013, 1015, 1016, 1017, 1020, 1021, 
+                        1022, 1023, 1030, 1031, 1032, 1033, 1040, 1041, 
+                        1042, 1043, 1050]
      self.txt_key = 0
      self.text_key_flug = False
      self.enemy_crt_flug = False
@@ -277,6 +281,10 @@ class App:
          self.n2 = 0
          self.n3 = 0
          self.sn = 1
+         
+         self.tile_camera_cn = 0
+         self.tile_camera_cnx = 0
+         self.tile_camera_cny = 0
          ##############################################################
 
      if pyxel.btnp(pyxel.KEY_SPACE) and self.game_end == True:
@@ -3111,7 +3119,7 @@ class App:
      #///////////////////////////////////////////////////////////////////////
          
      #Status view/////////////////////////////////////////////////////////////
-     elif n == 2:
+     if n == 2:
          self.page_move = self.page_move + 1
          if self.page_move > 5:
              if pyxel.btn(pyxel.KEY_N):
@@ -5992,7 +6000,10 @@ class App:
      
      #Other///////////////////////////////////////////////////////////////////
      else:
-         self.movie_flug = False
+         if n in self.event_list:
+             pass
+         else:
+             self.movie_flug = False
      #////////////////////////////////////////////////////////////////////////
      
     #Return game
@@ -6246,7 +6257,7 @@ class App:
  def Save_data(self):
      #Save data
      try:
-         with open('DATA/data.csv', 'w', newline="") as f:
+         with open('assets/DATA/data.csv', 'w', newline="") as f:
                  writer = csv.writer(f)
                  data = []
                  data2 = []
@@ -6291,7 +6302,7 @@ class App:
                  
  def Load_data(self, n):
      data = []
-     data_file = 'DATA/data_' + str(n) + '.csv'
+     data_file = 'assets/DATA/data_' + str(n) + '.csv'
      try:
          with open(data_file) as f:
              reader = csv.reader(f)
