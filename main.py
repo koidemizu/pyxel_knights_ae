@@ -218,9 +218,9 @@ class App:
      if pyxel.btnp(pyxel.KEY_Q) and self.game_start == False:
          pyxel.quit()
          
-     if pyxel.btnp(pyxel.KEY_M):
-         self.movie_count = 1050
-         self.movie_flug = True
+     #if pyxel.btnp(pyxel.KEY_M):
+     #    self.movie_count = 1050
+     #    self.movie_flug = True
          
      if pyxel.btnp(pyxel.KEY_Q) and self.game_over == True:
          #Return to title#########################################
